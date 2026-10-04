@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categories | Café Admin</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/vendor/icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-page="admin-categories" data-root="../" data-title="Categories">
+<div class="admin-layout"><aside id="adminSidebar" class="admin-sidebar"></aside>
+<div class="admin-main"><div id="adminTopbar"></div>
+<main class="p-3 p-lg-4">
+<div class="card"><div class="card-body">
+  <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="mb-0">All categories</h5><button class="btn btn-primary" id="addCatBtn"><i class="bi bi-plus-lg me-1"></i>Add category</button></div>
+  <div class="table-responsive"><table class="table align-middle mb-0"><thead><tr><th>Category</th><th class="d-none d-md-table-cell">Description</th><th>Items</th><th>Status</th><th class="text-end">Actions</th></tr></thead><tbody id="catBody"></tbody></table></div>
+</div></div>
+<div class="modal fade" id="catModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <form id="catForm" novalidate>
+    <div class="modal-header"><h5 class="modal-title" id="catModalTitle">Add category</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-body"><input type="hidden" name="catId"><div class="row g-3">
+      <div class="col-12"><label class="form-label" for="c_name">Name</label><input class="form-control" id="c_name" name="name" required minlength="2"><div class="invalid-feedback">Name is required.</div></div>
+      <div class="col-md-6"><label class="form-label" for="c_icon">Icon</label><select class="form-select" id="c_icon" name="icon"><option value="bi-brightness-high">Brightness High</option><option value="bi-basket">Basket</option><option value="bi-lightning-charge">Lightning Charge</option><option value="bi-egg-fried">Egg Fried</option><option value="bi-cup-hot">Cup Hot</option><option value="bi-cup-straw">Cup Straw</option><option value="bi-cake2">Cake2</option><option value="bi-tag">Tag</option><option value="bi-fire">Fire</option><option value="bi-heart">Heart</option></select></div>
+      <div class="col-md-6"><label class="form-label" for="c_status">Status</label><select class="form-select" id="c_status" name="status"><option>Active</option><option>Inactive</option></select></div>
+      <div class="col-12"><label class="form-label" for="c_desc">Description</label><textarea class="form-control" id="c_desc" name="description" rows="2"></textarea></div>
+    </div></div>
+    <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary">Save category</button></div>
+  </form></div></div></div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title">Delete category?</h5><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body">Are you sure you want to delete <strong id="delName"></strong>? This cannot be undone.</div>
+  <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-danger" id="confirmDelete">Delete</button></div></div></div></div>
+</main></div></div>
+
+  <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../js/mockData.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

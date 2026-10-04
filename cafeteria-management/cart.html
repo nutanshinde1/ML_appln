@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart | Campus Café</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body class="" data-page="cart" data-root="" >
+<div id="site-navbar"></div>
+<section class="page-header "><div class="container"><h1>Your Cart</h1></div></section>
+
+<main class="container py-4 py-lg-5">
+  <div class="stepper mb-4"><div class="s on"><b>1</b>Cart</div><span class="sep"></span><div class="s "><b>2</b>Checkout</div><span class="sep"></span><div class="s "><b>3</b>Confirmation</div></div>
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div id="cartList"></div>
+      <div class="d-flex justify-content-between mt-3">
+        <a href="menu.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Continue ordering</a>
+        <button class="btn btn-outline-danger d-none" id="clearCartBtn"><i class="bi bi-trash me-1"></i>Clear cart</button>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card summary-card"><div class="card-body">
+        <h5 class="mb-3">Order summary</h5>
+        <div class="d-flex justify-content-between mb-2"><span class="text-muted">Items</span><span id="sumItems">0</span></div>
+        <div class="d-flex justify-content-between mb-2"><span class="text-muted">Subtotal</span><span id="sumSubtotal">₹0</span></div>
+        <hr><div class="d-flex justify-content-between fs-5 fw-bold mb-3"><span>Total</span><span id="sumTotal" class="price">₹0</span></div>
+        <a href="checkout.html" id="checkoutBtn" class="btn btn-primary w-100 btn-lg disabled">Proceed to checkout</a>
+        <p class="small text-muted mt-3 mb-0"><i class="bi bi-shield-check me-1"></i>Pay first: your order is confirmed after payment.</p>
+      </div></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

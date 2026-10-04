@@ -1,0 +1,8 @@
+/* menu.css - menu toolbar and filters */
+.menu-toolbar { background: #fff; border: 1px solid var(--line); border-radius: .85rem; padding: 1rem; }
+.btn-pill { border: 1px solid var(--line); background: #fff; border-radius: 2rem; padding: .35rem 1rem; font-size: .92rem; color: var(--ink); transition: all .2s; }
+.btn-pill:hover { border-color: var(--brand); color: var(--brand-dark); }
+.btn-pill.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pills-scroll { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: .25rem; scrollbar-width: thin; }
+.pills-scroll .btn-pill { white-space: nowrap; }
+.qty-group .form-control { max-width: 3.5rem; }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | Campus Café</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body class="" data-page="checkout" data-root="" >
+<div id="site-navbar"></div>
+<section class="page-header "><div class="container"><h1>Checkout</h1></div></section>
+
+<main class="container py-4 py-lg-5">
+  <div class="stepper mb-4"><div class="s on"><b>1</b>Cart</div><span class="sep"></span><div class="s on"><b>2</b>Checkout</div><span class="sep"></span><div class="s "><b>3</b>Confirmation</div></div>
+  <form id="checkoutForm" novalidate>
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="card mb-4"><div class="card-body">
+        <h5 class="mb-3">1. Customer details</h5>
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label" for="fullName">Full name</label><input class="form-control" id="fullName" name="fullName" required minlength="3"><div class="invalid-feedback">Please enter your name.</div></div>
+          <div class="col-md-6"><label class="form-label" for="phone">Phone</label><input class="form-control" id="phone" name="phone" required pattern="[6-9][0-9]{9}" maxlength="10" inputmode="numeric"><div class="invalid-feedback">Enter a valid 10-digit mobile number.</div></div>
+          <div class="col-md-6"><label class="form-label" for="email">Email</label><input type="email" class="form-control" id="email" name="email" required><div class="invalid-feedback">Enter a valid email.</div></div>
+          <div class="col-md-6"><label class="form-label" for="pickup">Pickup time</label>
+            <select class="form-select" id="pickup" name="pickup" required><option>As soon as possible</option><option>In 15 minutes</option><option>In 30 minutes</option><option>In 1 hour</option></select></div>
+          <div class="col-12"><label class="form-label" for="notes">Special instructions <span class="text-muted">(optional)</span></label><textarea class="form-control" id="notes" name="notes" rows="2" maxlength="150" placeholder="Less spicy, extra chutney…"></textarea></div>
+        </div>
+      </div></div>
+
+      <div class="card"><div class="card-body">
+        <h5 class="mb-3">2. Payment method <span class="badge text-bg-warning align-middle ms-1">Demo</span></h5>
+        <div class="row g-2 mb-3" role="radiogroup">
+          <div class="col-4"><input type="radio" class="btn-check" name="paymentMethod" id="payUpi" value="UPI" checked><label class="pay-option" for="payUpi"><i class="bi bi-qr-code"></i><span>UPI</span></label></div>
+          <div class="col-4"><input type="radio" class="btn-check" name="paymentMethod" id="payCard" value="Card"><label class="pay-option" for="payCard"><i class="bi bi-credit-card"></i><span>Card</span></label></div>
+          <div class="col-4"><input type="radio" class="btn-check" name="paymentMethod" id="payWallet" value="Wallet"><label class="pay-option" for="payWallet"><i class="bi bi-wallet2"></i><span>Wallet</span></label></div>
+        </div>
+        <div id="upiPanel" class="row g-3 align-items-center">
+          <div class="col-sm-5 text-center"><img src="assets/images/demo-qr.svg" class="demo-qr" alt="Demo QR code placeholder"></div>
+          <div class="col-sm-7"><label class="form-label" for="upiId">Your UPI ID</label><input class="form-control" id="upiId" name="upiId" placeholder="name@bank" pattern="[\w.\-]{2,}@[\w]{2,}"><div class="invalid-feedback">Enter a valid UPI ID, e.g. name@bank</div>
+            <div class="form-text">This QR is a placeholder. No real payment is made.</div></div>
+        </div>
+        <div id="cardPanel" class="row g-3 d-none">
+          <div class="col-12"><div class="alert alert-warning py-2 mb-0 small"><i class="bi bi-exclamation-triangle me-1"></i>Demo only: do not enter real card details. Nothing is stored or sent.</div></div>
+          <div class="col-12"><label class="form-label" for="cardNumber">Card number</label><input class="form-control" id="cardNumber" name="cardNumber" inputmode="numeric" placeholder="0000 0000 0000 0000" pattern="[0-9 ]{19}" autocomplete="off"><div class="invalid-feedback">Enter a 16-digit card number.</div></div>
+          <div class="col-6"><label class="form-label" for="cardExpiry">Expiry</label><input class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])/[0-9]{2}" autocomplete="off"><div class="invalid-feedback">Use MM/YY.</div></div>
+          <div class="col-6"><label class="form-label" for="cardCvv">CVV</label><input class="form-control" id="cardCvv" name="cardCvv" inputmode="numeric" placeholder="123" pattern="[0-9]{3}" autocomplete="off"><div class="invalid-feedback">3 digits.</div></div>
+        </div>
+        <div id="walletPanel" class="d-none"><p class="text-muted mb-0"><i class="bi bi-info-circle me-1"></i>You will be redirected to your wallet app to approve the payment (simulated in this demo).</p></div>
+      </div></div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="card summary-card"><div class="card-body">
+        <h5 class="mb-3">Order summary</h5>
+        <ul class="list-unstyled mb-0" id="orderSummary"></ul>
+        <div class="d-flex justify-content-between fs-5 fw-bold my-3"><span>Total to pay</span><span class="price" id="coTotal">₹0</span></div>
+        <button type="submit" class="btn btn-primary btn-lg w-100"><i class="bi bi-lock me-2"></i>Pay <span id="payBtnAmount"></span> first &amp; confirm</button>
+        <a href="cart.html" class="btn btn-link w-100 mt-1">Back to cart</a>
+        <p class="small text-muted mb-0"><i class="bi bi-shield-check me-1"></i>Your order is created only after payment is verified.</p>
+      </div></div>
+    </div>
+  </div>
+  </form>
+</main>
+
+<div class="modal fade" id="payModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm"><div class="modal-content text-center p-4">
+    <div id="paySpinner" class="mx-auto mb-3"><div class="spinner-border text-primary" style="width:3rem;height:3rem" role="status"></div></div>
+    <div id="payDone" class="d-none mb-3"><div class="success-tick" style="width:56px;height:56px;font-size:2rem"><i class="bi bi-check-lg"></i></div></div>
+    <h6 id="payMsg" class="mb-0">Contacting payment provider…</h6>
+  </div></div>
+</div>
+<div id="site-footer"></div>
+
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
