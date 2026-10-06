@@ -66,7 +66,7 @@ The `Stress` value is not available for the relaxation condition, therefore rows
 
 The target variable used for prediction is:
 
-```text
+
 Stress
 
 The task is treated as a regression problem, where the machine learning models attempt to predict the stress score.
