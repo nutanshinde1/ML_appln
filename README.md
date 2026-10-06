@@ -177,6 +177,10 @@ Examples:
 Total:
 23 features
 
+
+
+
+
 ⚙️ Machine Learning Workflow
 The overall workflow followed in this project is:
 Dataset
@@ -203,6 +207,9 @@ Feature Group Comparison
    ↓
 Future Feature Selection & Optimization
 
+
+
+
 🧹 Data Preprocessing
 The following preprocessing steps are performed:
 - Load the SWELLdata sheet.
@@ -215,6 +222,8 @@ The following preprocessing steps are performed:
 - Handle missing values using median imputation.
 - Apply feature scaling where required.
 - Separate input features and target variable.
+
+
 🔐 Preventing Data Leakage
 A random row-level train-test split can cause data leakage because multiple records belong to the same participant.
 Instead, the project uses participant-level splitting.
@@ -262,6 +271,9 @@ with:
 MAE  = 1.514
 RMSE = 1.774
 R²   = 0.110
+
+
+
 
 The results show that the initial model has limited predictive power, indicating that further feature engineering and feature selection are required.
 🔎 Feature Correlation Analysis
@@ -327,6 +339,7 @@ This suggests that irrelevant or noisy features may negatively affect model perf
 Finding 4 — Participant-Level Evaluation Is Important
 Because the dataset contains repeated observations from the same participants, random row-level splitting can produce overly optimistic results.
 Participant-level splitting provides a more realistic evaluation.
+```text
 📁 Project Structure
 Stress-ML/
 │
